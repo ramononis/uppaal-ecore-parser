@@ -8,7 +8,7 @@ Install the following plugins (tested version in parentheses) :
 ### Repository initialization
 Clone the repository with the ```--recurse-submodules``` argument in order to automatically initialize and update each submodule in the repository. Or execute ```git submodule init && git submodule update``` in the repository after cloning normally to achieve the same.
 ### Importing projects
-In Eclipse use "File -> Import -> (General) Existing Projects into Workspace". Select the 'UrPal' directory as the root directory and make sure the option "Search for nested projects" is enabled. Import (at least) the following projects:
+In Eclipse use "File -> Import -> (General) Existing Projects into Workspace". Select the 'uppaal-ecore-parser' directory as the root directory and make sure the option "Search for nested projects" is enabled. Import (at least) the following projects:
 * nl.utwente.ewi.fmt.uppaalsmc
 * org.muml.uppaal
 * org.muml.uppaal.serialization
