@@ -1,4 +1,4 @@
-module nl.utwente.ewi.fmt.uppaalsmc.parser.GenerateUppaalSMC
+module nl.utwente.ewi.fmt.uppaalSMC.parser.GenerateUppaalSMC
 
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
@@ -21,7 +21,7 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
-			name = "nl.utwente.ewi.fmt.uppaalsmc.parser.UppaalSMC"
+			name = "nl.utwente.ewi.fmt.uppaalSMC.parser.UppaalSMC"
 			fileExtensions = "xml"
 			referencedResource = "platform:/resource/org.muml.uppaal/model/uppaal.genmodel"
 			referencedResource = "platform:/resource/nl.utwente.ewi.fmt.uppaalsmc/model/uppaalSMC.genmodel"
@@ -40,6 +40,13 @@ Workflow {
 				// Generates checks for @Deprecated grammar annotations, an IssueProvider and a corresponding PropertyPage
 				generateDeprecationValidation = true
 			}
+			
+			parserGenerator = {
+				options = {
+					backtrack = true
+				}
+			}
+			
 			junitSupport = {
 				junitVersion = "5"
 			}
