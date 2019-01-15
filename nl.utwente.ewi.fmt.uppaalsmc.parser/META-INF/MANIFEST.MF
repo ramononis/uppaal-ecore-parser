@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: nl.utwente.ewi.fmt.uppaalsmc.parser
+Bundle-ManifestVersion: 2
+Bundle-Name: nl.utwente.ewi.fmt.uppaalsmc.parser
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: nl.utwente.ewi.fmt.uppaalsmc.parser; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.muml.uppaal,
+ nl.utwente.ewi.fmt.uppaalsmc,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
