@@ -460,7 +460,7 @@ FunctionCallExpression returns expressions::FunctionCallExpression:
 		)? ')';
 
 IdentifierExpression returns expressions::IdentifierExpression:
-	identifier=[core::NamedElement|ID] (derivative?="'")?
+	identifier=[core::NamedElement|ID] (clockRate?="'")?
 		('[' index+=Expression ( "]" "[" index+=Expression)* ']' )?;
 
 enum IncrementDecrementOperator returns expressions::IncrementDecrementOperator:
