@@ -2,7 +2,7 @@
 Parsing plain-text UPPAAL files to Ecore models using the UPPAAL meta-model and libutap
 ## Setup
 ### Eclipse IDE
-Recommended package is [Eclipse Model Tools](https://www.eclipse.org/downloads/packages/).  
+Recommended package is [Eclipse Modeling Tools](https://www.eclipse.org/downloads/packages/).  
 Install the following plugins (tested version in parentheses) :
 * Xtext Complete SDK (2.16.0.v20181203-1555)
 ### Repository initialization
