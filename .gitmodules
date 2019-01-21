@@ -1,4 +1,4 @@
 [submodule "AFTModel"]
-	path = AFTModel
+	path = UppaalEMF
 	url = ssh://vcs@vcs.utwente.nl/source/AFTModel.git
 	branch = UppaalEMFRamon
