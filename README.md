@@ -5,7 +5,7 @@ Parsing plain-text UPPAAL files to Ecore models using the UPPAAL meta-model and 
 Recommended package is [Eclipse Modeling Tools](https://www.eclipse.org/downloads/packages/).  
 Install the following plugins (tested version in parentheses) :
 * Xtext Complete SDK (2.16.0.v20181203-1555)
-* m2e - Maven Integration for Eclipse (1.10.0.20181127-2120)
+* Eclipse Plug-ins for Gradle	(3.0.0.v20181106-1441-m)
 ### Repository initialization
 Clone the repository with the ```--recurse-submodules``` argument in order to automatically initialize and update each submodule in the repository. Or execute ```git submodule init && git submodule update``` in the repository after cloning normally to achieve the same.
 ### Importing projects
