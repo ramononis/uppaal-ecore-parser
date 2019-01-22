@@ -1,11 +1,29 @@
 plugins {
     id 'java-library'
 }
+apply plugin: 'eclipse'
+
+eclipse {
+    classpath {
+      file {
+            whenMerged {
+                def source = entries.find { it.path == 'main/java' }
+                source.entryAttributes['ignore_optional_problems'] = 'true'
+            }
+        }
+    }
+}
+
 sourceSets {
 	main {
 		java {
+			srcDir 'main/java'
+			srcDir 'main/src-gen'
+			srcDir 'main/xtend-gen'
+			srcDir '../UppaalEMF/requirements/org.muml.uppaal.requirements/src'
 			srcDir '../UppaalEMF/metamodel/nl.utwente.ewi.fmt.uppaalsmc/src'
 			srcDir '../UppaalEMF/metamodel/org.muml.uppaal/src'
+			srcDir '../UppaalEMF/serializer/org.muml.uppaal.serialization/xtend-gen'
 		}
 	}
 }
@@ -16,6 +34,7 @@ repositories {
 
 
 dependencies {
+	compile group: 'org.eclipse.core', name: 'org.eclipse.core.runtime', version: '3.7.0'
 	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.common', version: '2.15.0'
 	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.ecore', version: '2.15.0'
 	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext', version: '2.16.0'
@@ -31,10 +50,12 @@ dependencies {
 task xText(type: JavaExec) {
 	main = 'org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher'
 	classpath = configurations.compile
-	inputs.file "src/main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/GenerateUppaalSMC.mwe2"
-	inputs.file "src/main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/UppaalSMC.xtext"
-	outputs.dir "generated-src"
-	args += "src/main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/GenerateUppaalSMC.mwe2"
+	classpath += sourceSets.main.runtimeClasspath
+	classpath += files("../UppaalEMF/metamodel/org.muml.uppaal/src")
+	classpath += files("../UppaalEMF/metamodel/nl.utwente.ewi.fmt.uppaalsmc/src")
+	inputs.file "main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/GenerateUppaalSMC.mwe2"
+	inputs.file "main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/UppaalSMC.xtext"
+	args += "main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/GenerateUppaalSMC.mwe2"
 }
 ///**
 //*/
