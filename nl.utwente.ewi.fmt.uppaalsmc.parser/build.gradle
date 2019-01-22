@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id "org.xtext.xtend" version "2.0.2"
 }
 apply plugin: 'eclipse'
 
@@ -19,11 +20,10 @@ sourceSets {
 		java {
 			srcDir 'main/java'
 			srcDir 'main/src-gen'
-			srcDir 'main/xtend-gen'
 			srcDir '../UppaalEMF/requirements/org.muml.uppaal.requirements/src'
 			srcDir '../UppaalEMF/metamodel/nl.utwente.ewi.fmt.uppaalsmc/src'
 			srcDir '../UppaalEMF/metamodel/org.muml.uppaal/src'
-			srcDir '../UppaalEMF/serializer/org.muml.uppaal.serialization/xtend-gen'
+			srcDir '../UppaalEMF/serializer/org.muml.uppaal.serialization/src'
 		}
 	}
 }
@@ -42,6 +42,8 @@ dependencies {
 	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.mwe2.launch', version: '2.9.1.201705291010'
 	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext.common.types', version: '2.16.0'
 	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext.xtext.generator', version: '2.16.0'
+	
+	compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.16.0'
 	
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
