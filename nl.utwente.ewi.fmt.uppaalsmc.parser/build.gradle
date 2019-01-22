@@ -1,0 +1,40 @@
+plugins {
+    id 'java-library'
+}
+sourceSets {
+	main {
+		java {
+			srcDir '../UppaalEMF/metamodel/nl.utwente.ewi.fmt.uppaalsmc/src'
+			srcDir '../UppaalEMF/metamodel/org.muml.uppaal/src'
+		}
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.common', version: '2.15.0'
+	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.ecore', version: '2.15.0'
+	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext', version: '2.16.0'
+
+	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.mwe2.launch', version: '2.9.1.201705291010'
+	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext.common.types', version: '2.16.0'
+	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext.xtext.generator', version: '2.16.0'
+	
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+
+task xText(type: JavaExec) {
+	main = 'org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher'
+	classpath = configurations.compile
+	inputs.file "src/main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/GenerateUppaalSMC.mwe2"
+	inputs.file "src/main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/UppaalSMC.xtext"
+	outputs.dir "generated-src"
+	args += "src/main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/GenerateUppaalSMC.mwe2"
+}
+///**
+//*/
