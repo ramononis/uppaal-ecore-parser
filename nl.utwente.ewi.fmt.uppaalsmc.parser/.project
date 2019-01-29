@@ -11,12 +11,12 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
+			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -38,9 +38,9 @@
 			<location>/home/ramon/repos/UrPal/uppaal-ecore-parser/UppaalEMF/metamodel/org.muml.uppaal/src</location>
 		</link>
 		<link>
-			<name>org.muml.uppaal.serialization-xtend-gen</name>
+			<name>org.muml.uppaal.serialization-src</name>
 			<type>2</type>
-			<location>/home/ramon/repos/UrPal/uppaal-ecore-parser/UppaalEMF/serializer/org.muml.uppaal.serialization/xtend-gen</location>
+			<location>/home/ramon/repos/UrPal/uppaal-ecore-parser/UppaalEMF/serializer/org.muml.uppaal.serialization/src</location>
 		</link>
 		<link>
 			<name>src</name>
