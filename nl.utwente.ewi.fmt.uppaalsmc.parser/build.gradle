@@ -25,11 +25,18 @@ sourceSets {
 			srcDir '../UppaalEMF/metamodel/org.muml.uppaal/src'
 			srcDir '../UppaalEMF/serializer/org.muml.uppaal.serialization/src'
 		}
+		resources {
+			srcDirs "main/src-gen"
+		}
 	}
 }
-
+sourceSets.main.resources.filter.include('**/*.xtextbin', '**/*.g', '**/*.tokens')
 repositories {
     mavenCentral()
+	maven {
+		url 'https://repo.eclipse.org/content/groups/releases'
+	}
+
 }
 
 
@@ -42,9 +49,9 @@ dependencies {
 	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.mwe2.launch', version: '2.9.1.201705291010'
 	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext.common.types', version: '2.16.0'
 	compile group: 'org.eclipse.xtext', name: 'org.eclipse.xtext.xtext.generator', version: '2.16.0'
-	
-	compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.16.0'
-	
+	compile group: 'org.eclipse.ocl', name: 'org.eclipse.ocl.common', version: '1.2.0.v20140610-0641'
+	compile group: 'org.eclipse.ocl', name: 'org.eclipse.ocl.ecore', version: '3.3.100.v20140610-0641'
+
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
@@ -59,5 +66,3 @@ task xText(type: JavaExec) {
 	inputs.file "main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/UppaalSMC.xtext"
 	args += "main/java/nl/utwente/ewi/fmt/uppaalSMC/parser/GenerateUppaalSMC.mwe2"
 }
-///**
-//*/

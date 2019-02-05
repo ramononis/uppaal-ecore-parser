@@ -3,13 +3,27 @@
  */
 package nl.utwente.ewi.fmt.uppaalSMC.parser
 
+import com.google.inject.Injector
+import org.eclipse.emf.ecore.EOperation
+import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.EValidator
+import org.eclipse.ocl.common.OCLConstants
+import org.eclipse.ocl.ecore.delegate.OCLInvocationDelegateFactory
+import org.eclipse.ocl.ecore.delegate.OCLSettingDelegateFactory
+import org.eclipse.ocl.ecore.delegate.OCLValidationDelegateFactory
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
 class UppaalSMCStandaloneSetup extends UppaalSMCStandaloneSetupGenerated {
 
-	def static void doSetup() {
-		new UppaalSMCStandaloneSetup().createInjectorAndDoEMFRegistration()
+	def static Injector doSetup() {
+		var oclDelegateURI = OCLConstants.OCL_DELEGATE_URI;
+		EOperation.Internal.InvocationDelegate.Factory.Registry.INSTANCE.put(oclDelegateURI,
+		new OCLInvocationDelegateFactory.Global());
+		EStructuralFeature.Internal.SettingDelegate.Factory.Registry.INSTANCE.put(oclDelegateURI,
+		new OCLSettingDelegateFactory.Global());
+		EValidator.ValidationDelegate.Registry.INSTANCE.put(oclDelegateURI, new OCLValidationDelegateFactory.Global());
+		return new UppaalSMCStandaloneSetup().createInjectorAndDoEMFRegistration()
 	}
 }

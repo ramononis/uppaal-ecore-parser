@@ -3,9 +3,53 @@
  */
 package nl.utwente.ewi.fmt.uppaalSMC.parser
 
+import com.google.inject.Binder
+import nl.utwente.ewi.fmt.uppaalSMC.NSTA
+import nl.utwente.ewi.fmt.uppaalSMC.UppaalSMCPackage
+import nl.utwente.ewi.fmt.uppaalSMC.impl.UppaalSMCFactoryImpl
+import org.eclipse.emf.ecore.EPackage
+import org.muml.uppaal.types.BuiltInType
+import org.muml.uppaal.types.impl.TypesFactoryImpl
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class UppaalSMCRuntimeModule extends AbstractUppaalSMCRuntimeModule {
+
+    override void configure(Binder binder) {
+        UppaalSMCPackage.eINSTANCE.eClass()
+        val typesFactory = TypesFactoryImpl.init()
+        EPackage.Registry.INSTANCE.getEPackage(UppaalSMCPackage.eNS_URI).EFactoryInstance = new UppaalSMCFactoryImpl() {
+            override NSTA createNSTA() {
+                val nta = super.createNSTA()
+                nta.bool = typesFactory.createPredefinedType()
+                nta.bool.name = "bool"
+                nta.bool.type = BuiltInType.BOOL
+                nta.int = typesFactory.createPredefinedType()
+                nta.int.name = "int"
+                nta.int.type = BuiltInType.INT
+                nta.chan = typesFactory.createPredefinedType()
+                nta.chan.name = "chan"
+                nta.chan.type = BuiltInType.CHAN
+                nta.clock = typesFactory.createPredefinedType()
+                nta.clock.name = "clock"
+                nta.clock.type = BuiltInType.CLOCK
+                nta.void = typesFactory.createPredefinedType()
+                nta.void.name = "void"
+                nta.void.type = BuiltInType.VOID
+                nta.double = createDoubleType()
+                nta.double.name = "double"
+                nta
+            }
+        }
+
+        //		EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI).EFactoryInstance = new TypesFactoryImpl() {
+        //			override RangeTypeSpecification createRangeTypeSpecification() {
+        //				var rangeTypeSpecification = super.createRangeTypeSpecification()
+        //				rangeTypeSpecification.baseType
+        //				return rangeTypeSpecification
+        //			}
+        //		}
+        super.configure(binder)
+    }
 }
