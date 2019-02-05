@@ -6,3 +6,4 @@ build
 xtend-gen
 main/xtend-gen
 bin
+out
