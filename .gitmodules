@@ -1,0 +1,4 @@
+[submodule "UppaalEMF"]
+	path = UppaalEMF
+	url = git@github.com:utwente-fmt/uppaal.git
+	branch = UppaalEMF-UrPal
